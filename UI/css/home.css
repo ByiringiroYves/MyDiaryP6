@@ -242,7 +242,7 @@ border: 1px solid var(--rayol-primary-color);
   background-color: rgb(149, 255, 149);
 }
 .logout-text{
-  color:var( --rayol-primary1-color);
+  color:var( --rayol-primary-color);
   font-size: 10px;
 }
 .seach-entries-div{
