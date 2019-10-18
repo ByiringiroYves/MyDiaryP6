@@ -1,0 +1,49 @@
+.user-Account{
+ height: 400px;
+ width: 400px;
+ background: rgb(236, 235, 235);
+ border-radius: 5px;
+ border-radius: var(--border-radius);
+ -webkit-box-shadow:0px 0px 6px var(--rayal-white-borders);
+-moz-box-shadow:0px 0px 6px var(--rayal-white-borders);
+opacity: 0.7;
+filter: alpha(opacity=70);
+}
+.Entry-managment{
+    height: 400px;
+    width: 400px;
+    margin-left: 100px;
+    background: rgb(236, 235, 235);
+    border-radius: 5px;
+    border-radius: var(--border-radius);
+   -webkit-box-shadow:0px 0px 6px var(--rayal-white-borders);
+   -moz-box-shadow:0px 0px 6px var(--rayal-white-borders);
+   opacity: 0.7;
+}
+.ac-icon{
+    height: 60px;
+    width: 75px;
+}
+.ac-div{
+    margin-top: 18px;
+    height: 61px;
+    width: 76px;
+}
+.diary-icon{
+    height: 66px;
+    width: 81px;
+}
+.diary-div{
+    margin-top: 18px;
+    height: 67px;
+    width: 82px;
+}
+.user-acc{
+    color:rgb(61, 133, 105);
+    margin-top: 18px;
+}
+.use-acc-div{
+    height: 20px;
+    width: 100px;
+    margin-top: 10px;
+}
