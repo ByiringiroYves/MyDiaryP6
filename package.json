@@ -1,0 +1,39 @@
+{
+  "name": "MyDiaryP6",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --exec babel-node ./Server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ByiringiroYves/MyDiaryP6.git"
+  },
+  "keywords": [],
+  "author": "Byiringiro Yves",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ByiringiroYves/MyDiaryP6/issues"
+  },
+  "homepage": "https://github.com/ByiringiroYves/MyDiaryP6#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/node": "^7.6.3",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/register": "^7.6.2",
+    "bcrypt": "^3.0.6",
+    "dotenv": "^8.2.0",
+    "eslint": "^6.5.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "jsonwebtoken": "^8.5.1",
+    "nodemon": "^1.19.4"
+  }
+}
