@@ -1,10 +1,17 @@
+/* eslint-disable no-unused-vars */
 import express from 'express';
-import Entry from '../controlers/NewEntery';
-// import UserMiddleWare from '../middleware/User';
+import Entry from '../controlers/Entry';
+import Auth from '../middleware/AuthCheck';
+import EntryMiddleWare from '../middleware/Entry';
 
 const router = express.Router();
 
-router.post('/api/v1/auth/newEntry', Entry.NewEntry);
-// router.post('/api/v1/auth/signup',UserMiddleWare.userNotExists, User.signup);
+router.get('/api/v1/entries', Auth.verifyToken, Entry.GetEntries);
+// router.get('/api/v1/entries', Auth.verifyToken, Entry.GetEntries);
+// router.post('/api/v1/entries', Auth.verifyToken, Entry.GetEntries);
+router.post('/api/v1/NewEntry', Entry.NewEntry);
+router.delete('/api/v1/entry/:id/delete', Auth.verifyToken, EntryMiddleWare.entryExists, Entry.DeleteEntry);
+router.patch('/api/v1/entry/:id/modify', Auth.verifyToken, EntryMiddleWare.entryExists, Entry.ModifyEntry);
+
 
 export default router;

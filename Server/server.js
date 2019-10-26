@@ -1,7 +1,9 @@
 /* eslint-disable no-unused-vars */
 import express from "express";
-import Entry  from "./routes/Entry"
+import User  from "./routes/User";
+import Entry from "./routes/Entry";
 import bodyParser from "body-parser";
+const port = 50900;
 
 
 
@@ -10,9 +12,9 @@ import bodyParser from "body-parser";
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
+app.use('/', User);
 app.use('/', Entry);
 
-
-app.listen(2000, () => {
-    console.log("server is up and running on por", 2000);
+app.listen(port, () => {
+    console.log("server is up and running on port", port);
 })
