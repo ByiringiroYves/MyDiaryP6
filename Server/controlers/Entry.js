@@ -22,7 +22,13 @@ class Entry {
 			}
 		});
 	}
-	
+	static async GetEntries(req, res) {
+		const entries = await EntryModel.getEntries(req.user.email);
+		res.status(200).json({
+			status: 200,
+			data: entries
+		});
+	}
 }
     
 
