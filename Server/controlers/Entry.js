@@ -39,7 +39,20 @@ class Entry {
 				}
 			});
 		});
-		}
+	}
+	static async ModifyEntry(req, res) {
+		const {title, description} = req.body;
+		const { id } = req.params;
+		const entry = await EntryModel.modifyEntry(id).then(() => {
+			res.status(200).json({
+				status: 200,
+				data: {
+				message:'entry successfully Edited'	
+				}
+			})
+		})
+		   
+	}
 }
     
 
