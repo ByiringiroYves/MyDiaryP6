@@ -53,7 +53,40 @@ class User {
              "error" : {"message": error.details[0].message.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '')}
          }));
 }
-   
+static async login(req, res){
+    joi.validate(req.body, validation.validator.loginSchema).then((result)=> {
+      UserModel.getUserByEmail(req.body.email).then((user)=>{
+            if(!user){
+              return res.status(401).json({
+                 status: 401,
+                 error: "User is not Exist"     
+              }); 
+            }else{
+            helpers.isCorrectPassword(req.body.password,user.password).then((result) => {
+               if(!result){
+                   return res.status(400).json({
+                      status: 400,
+                      error: "invalid password"     
+                  })     
+               }else{
+            AuthCheck.generateToken(user).then((token) => {
+            return res.status(200).send({
+               status: 200,
+               data : {
+                    token: token,
+               }    
+             })
+            })          
+          }
+         })   
+       }   
+    } )     
+ }).catch(error => res.send({
+     "status": 400,
+     "error" : {"message": error.details[0].message.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '')}
+ }));
+    
+}  
 }
 
 export default User; 
