@@ -29,6 +29,17 @@ class Entry {
 			data: entries
 		});
 	}
+	static async DeleteEntry(req, res) {
+		const { id } = req.params;
+			EntryModel.removeEntry(id).then(() => {
+			res.status(200).json({
+				status: 200,
+				data: {
+				message: 'entry successfully Deleted'
+				}
+			});
+		});
+		}
 }
     
 
