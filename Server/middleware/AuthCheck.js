@@ -5,6 +5,7 @@
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import userModal from '../models/User';
+import { decode } from 'punycode';
 
 dotenv.config();
 class Auth {

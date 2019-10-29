@@ -1,15 +1,12 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
-
 // import Password from '../helpers/password';
 import EntryModel from '../models/Entry';
 // import idgen from '../helpers/Id';
 import uuidv4 from 'uuid/v4';
 class Entry {
 	static async NewEntry(req, res) {
-
 		const { title, description} = req.body;
-		// const Idgenerator = await idgen.Idgenerator();
 		EntryModel.addNewEntry({ title, description});
 		res.status(200).json({
 			status: 200,
@@ -17,10 +14,20 @@ class Entry {
 		    id: uuidv4(),
 			message: 'entry successfully created',
 	     	createdOn: new Date(),
-			 title,
-			 description
+			title,
+			description,
+			email: req.user.email
 			}
 		});
+	}
+	static async GetEntry(req, res){
+		const { id } = req.params;
+		const entry = await EntryModel.findEntryByI(id).then(() => {
+		res.status(200).json({
+			status: 200,
+			data: entry
+		})
+	});
 	}
 	static async GetEntries(req, res) {
 		const entries = await EntryModel.getEntries(req.user.email);
@@ -41,13 +48,13 @@ class Entry {
 		});
 	}
 	static async ModifyEntry(req, res) {
-		const {title, description} = req.body;
 		const { id } = req.params;
 		const entry = await EntryModel.modifyEntry(id).then(() => {
 			res.status(200).json({
 				status: 200,
 				data: {
-				message:'entry successfully Edited'	
+				message:'entry successfully Edited',	
+				entry
 				}
 			})
 		})

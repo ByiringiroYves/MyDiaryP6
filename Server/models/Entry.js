@@ -5,20 +5,20 @@ class Entry {
          id: "1e",
          title:"My Entire life",
          description:"in my life i was strongly affected by ambitions of being a famous electronician",
-         email: "byiringirbvbnvo@gmail.com"
+         "email": "byiringirbvbnvo@gmail.com"
        },
        { 
          id: "3e",
          title:"my likely products",
          description:"in my life i was strongly affected by ambitions of being a famous electronician",
-         email: "eric@gmail.com"
+         "email":"erichhjkhbv@gmail.com",
        },
      ]
     }
 
     addNewEntry(entry){
       this.entries.push(entry);
-      // console.log(entry);
+       console.log(entry);
       return entry;
     }
     async getEntries(email){
@@ -41,7 +41,7 @@ class Entry {
     return newEntries;
   }
   async modifyEntry(){
-    let modifyentry = [req.body];
+    let modifyentry = [{title, description} =req.body];
     this.entries.forEach(element => {
       if(element.id !== id){
         modifyentry.push(element);

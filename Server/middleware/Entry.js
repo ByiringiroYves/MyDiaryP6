@@ -34,6 +34,7 @@ import EntryModel from '../models/Entry';
 		}
 		next();
 	}
+	
 	static async entryExist(req, res, next) {
 		const { id } = req.params;
 		const { email } = req.user;
