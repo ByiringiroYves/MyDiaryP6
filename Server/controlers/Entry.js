@@ -1,13 +1,11 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
-// import Password from '../helpers/password';
 import EntryModel from '../models/Entry';
-// import idgen from '../helpers/Id';
+import entries from '../models/Entry';
 import uuidv4 from 'uuid/v4';
+
 class Entry {
 	static async NewEntry(req, res) {
 		const { title, description} = req.body;
-		EntryModel.addNewEntry({ title, description});
+		EntryModel.addNewEntry({ title, description, email:req.user.email, createdOn: new Date(), id: uuidv4()});
 		res.status(200).json({
 			status: 200,
 			data: {
@@ -22,12 +20,11 @@ class Entry {
 	}
 	static async GetEntry(req, res){
 		const { id } = req.params;
-		const entry = await EntryModel.findEntryByI(id).then(() => {
+		const entry = await EntryModel.findEntryById(id);
 		res.status(200).json({
 			status: 200,
 			data: entry
-		})
-	});
+		});
 	}
 	static async GetEntries(req, res) {
 		const entries = await EntryModel.getEntries(req.user.email);
@@ -38,7 +35,7 @@ class Entry {
 	}
 	static async DeleteEntry(req, res) {
 		const { id } = req.params;
-			EntryModel.removeEntry(id).then(() => {
+		    EntryModel.removeEntry(id).then(() => {
 			res.status(200).json({
 				status: 200,
 				data: {
@@ -47,18 +44,16 @@ class Entry {
 			});
 		});
 	}
-	static async ModifyEntry(req, res) {
+	static async Modify(req, res){
 		const { id } = req.params;
-		const entry = await EntryModel.modifyEntry(id).then(() => {
-			res.status(200).json({
-				status: 200,
-				data: {
-				message:'entry successfully Edited',	
-				entry
-				}
-			})
-		})
-		   
+		// const {title, description} = req.body;
+		const entry = await EntryModel.findEntryById(id);
+		entry.title = req.body.title;
+		entry.description = req.body.description; 
+		res.status(200).json({
+			status: 200,
+			 data: entry
+		});
 	}
 }
     

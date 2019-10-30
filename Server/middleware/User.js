@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import UserModel from '../models/User';
 class User {
 	static async userNotExists(req, res, next) {

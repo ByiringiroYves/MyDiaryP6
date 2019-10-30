@@ -10,7 +10,7 @@ body{
 }
 
 .all-body-content{
-  height: 800px;
+  height: 600px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: -webkit-flex;
@@ -37,10 +37,11 @@ body{
   /* top:0px; */
 }
 .head{
+  margin-top: 100px;
   min-height: 60px;
   width: 100%;
   background-color: var(--rayol-primary-color);
-  margin-top:0px;
+  /* margin-top:0px; */
   display: flex;
 }
 
@@ -89,14 +90,17 @@ background: none;
 .icon-menu{
   width:17px;
   height:20px;
+  cursor: pointer;
 }
 .icon-menu1{
   width:22px;
   height:23px;
+  cursor: pointer;
 }
 .menu-btn{
   background-color: var(--rayol-primary-color);
   border: 1px solid var(--rayol-primary-color);
+  cursor: pointer;
 }
 .menu-btn:hover{
   -webkit-box-shadow:0px 0px 6px var(--rayal-white-borders);
@@ -144,11 +148,13 @@ input:focus {
   width: 60px;
   margin-left:0px;
   border: 0px solid yellow;
+  cursor: pointer;
 }
 .notification-div{
   float: left;
   margin-right:0px;
   display: flex;
+  cursor: pointer;
 }
 .not-img{
   float: left;
@@ -176,6 +182,7 @@ display:none;
   min-height: 60px;
   width: 100%;
   margin-top: 0px;
+  cursor: pointer;
 }
 .profile1{
 
@@ -183,10 +190,12 @@ display:none;
   min-height: 60px;
   width: 100%;
   margin-top: 0px;
+  cursor: pointer;
 }
 .journal-btn:hover{
   border-left: 2px solid white;
   background-color: var( --rayol-primary2-color);
+  cursor: pointer;
 }
 .profile1:hover{
   border-left: 2px solid white;
@@ -224,6 +233,7 @@ display:none;
 .logout-div{
   min-height: 60px;
   width: 100%;
+  cursor: pointer;
 }
 .logout{
 height: 40px;
@@ -232,6 +242,7 @@ background-color: var(--rayal-white);
 border: 1px solid var(--rayol-primary-color);
 -webkit-box-shadow:0px 0px 6px var(--rayal-white-borders);
 -moz-box-shadow:0px 0px 6px var(--rayal-white-borders);
+cursor: pointer;
 }
 .logout:hover{
   border-left: 2px solid white;
@@ -261,6 +272,7 @@ border: 1px solid var(--rayol-primary-color);
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
   float: left;
+  cursor: pointer;
   
 }
 .search-input{
@@ -280,6 +292,7 @@ border: 1px solid var(--rayol-primary-color);
 .add-entries-div{
   min-height: 40px;
   width: 100%;
+  cursor: pointer;
 
 }
 .add-btn{
@@ -287,6 +300,7 @@ border: 1px solid var(--rayol-primary-color);
   width: 100%;
   background-color: var(--rayol-primary1-color);
   border: 0px solid var(--rayol-primary1-color);
+  cursor: pointer;
 }
 .add-btn:hover{
   border-left: 2px solid white;
@@ -308,12 +322,14 @@ border: 1px solid var(--rayol-primary-color);
 .Entry-list-div{
     min-height: 40px;
     width: 100%;
+    cursor: pointer;
   }
 .list-btn{
     height: 40px;
     width: 100%;
     border: 0px solid var(--rayal-gray-color);
     background-color: var(--rayol-primary1-color);
+    cursor: pointer;
   }
 .list-btn:hover{
     border-left: 2px solid white;
@@ -334,10 +350,12 @@ border: 1px solid var(--rayol-primary-color);
 .notification-div{
   float: left;
   margin-right:0px;
+  cursor: pointer;
 }
 .notification-div{
     height: 35px;
     width: 100%;
+    cursor: pointer;
   }
 .notif-text{
   color: var(--rayal-white);
@@ -371,6 +389,7 @@ border: 1px solid var(--rayol-primary-color);
   .notif-btn:hover{
     border-left: 2px solid white;
     background-color: var(--rayol-primary2-color);
+    cursor: pointer;
   }
   .content-body{
     height: 800px;
@@ -379,7 +398,6 @@ border: 1px solid var(--rayol-primary-color);
     display: -webkit-flex;
     display: flex;
     justify-content: center;
-    /* align-items: center; */
   }
   .content-header{
     height: 40px;
@@ -394,7 +412,7 @@ border: 1px solid var(--rayol-primary-color);
   }
   .small-title{
     font-style: italic;
-    color: rgb(175, 171, 171);
+    color: rgb(252, 247, 247);
   }
   .top-icon-div{
     display: -webkit-box;
@@ -466,6 +484,7 @@ border: 1px solid var(--rayol-primary-color);
     width: 100px;
     height: 44px;
     margin-left: 10px;
+    cursor: pointer;
   }
   .td{
     border: 1px solid green;

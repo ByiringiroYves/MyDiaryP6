@@ -1,8 +1,3 @@
-/* eslint-disable no-dupe-class-members */
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
-// import password from "../helpers/password";
-
 class User {
     constructor(){
      this.userList = [

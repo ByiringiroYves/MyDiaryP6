@@ -1,9 +1,6 @@
 import moment from 'moment';
 import uuidv4 from 'uuid/v4';
 import UserModel from '../models/User';
-// import authent from '../middleware/AuthCheck';
-// import Password from '../helpers/password';
-// import { join } from 'path';
 import AuthCheck from '../middleware/AuthCheck';
 import helpers from '../helpers/password';
 import validation from '../helpers/validation';
@@ -34,7 +31,6 @@ class User {
                         }
                         UserModel.addUser(user);
                         AuthCheck.generateToken(user).then((token) => {
-                          //  res.header('epic-mail-access-token', token);
                               return res.status(200).json({
                                   "status" : 200,
                                   "message": "User created successefully",

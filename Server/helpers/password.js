@@ -1,5 +1,4 @@
 import bcrpt from 'bcrypt';
-// import dotenv from 'dotenv';
 
 class password {
     async hashPassword(password){

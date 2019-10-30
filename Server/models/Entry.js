@@ -16,20 +16,20 @@ class Entry {
      ]
     }
 
-    addNewEntry(entry){
+    async addNewEntry(entry){
       this.entries.push(entry);
-       console.log(entry);
       return entry;
     }
     async getEntries(email){
-      return this.entries.filter((entry) => entry.email === email);
+      return  this.entries.filter((entry) => entry.email === email);
+     
     }
-   findEntry(title){
-     return this.entries.find((entry) => entry.title === title);
-   }
-   findEntryById(id){
-     return this.entries.find((entry) => entry.id === id);
-   }
+    async findEntry(parseInt){
+      return this.entries.find((entry)=> entry.id === parseInt(req.params.id, 10));
+    }
+   async findEntryById(id){
+       return this.entries.find((entry) => entry.id === id);
+   } 
    async removeEntry(id){
     let newEntries = []
     this.entries.forEach(element => {
@@ -40,15 +40,17 @@ class Entry {
     this.entries = newEntries;
     return newEntries;
   }
-  async modifyEntry(){
-    let modifyentry = [{title, description} =req.body];
-    this.entries.forEach(element => {
-      if(element.id !== id){
-        modifyentry.push(element);
-      }
-    }); 
-    this.entries = modifyentry; 
-    return modifyentry;
+  async getEntryPosition(id){ 
+    let possition = 0;
+    let ent = this.entries;
+   for(let i=0; i<ent.length; i++){
+    if(id == ent[i].id){
+      possition = i;
+      break;
+    }
+   }
+   console.log(possition);
+   return ent.splice(possition, 1).ent.push(entry);
   }
- }
+}
  export default new Entry();

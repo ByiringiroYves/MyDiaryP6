@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import express from "express";
 import User  from "./routes/User";
 import Entry from "./routes/Entry";
