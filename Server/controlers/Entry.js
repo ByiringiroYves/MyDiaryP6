@@ -1,6 +1,7 @@
 import EntryModel from '../models/Entry';
-import entries from '../models/Entry';
+import entriesu from '../models/Entry';
 import uuidv4 from 'uuid/v4';
+import moment from 'moment';
 
 class Entry {
 	static async NewEntry(req, res) {
@@ -11,10 +12,10 @@ class Entry {
 			data: {
 		    id: uuidv4(),
 			message: 'entry successfully created',
-	     	createdOn: new Date(),
 			title,
 			description,
-			email: req.user.email
+			email: req.user.email,
+			createdOn : moment(new Date())
 			}
 		});
 	}
@@ -45,16 +46,29 @@ class Entry {
 		});
 	}
 	static async Modify(req, res){
-		const { id } = req.params;
+		// const {entry} = 
+		// const {title, description} = req.body; 
+		const {email} = req.user;
+		console.log(email);
+		const { id } = req.params; 
+		// const entry = await 
 		// const {title, description} = req.body;
-		const entry = await EntryModel.findEntryById(id);
-		entry.title = req.body.title;
-		entry.description = req.body.description; 
-		res.status(200).json({
-			status: 200,
-			 data: entry
+		// const position = await EntryModel.getEntryPosition(id, req.user.email); 
+		const Modify = {
+			id, 
+			title: req.body.title,
+			description: req.body.description,
+			email: req.user.email,
+			UpdatedOn: new Date()
+		};
+		await EntryModel.updateEntry(id, email,Modify);
+		return res.status(200).json({
+			 status: 200,
+			  Modify
+
 		});
-	}
+		};
+
 }
     
 

@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --exec babel-node ./Server/server.js"
+    "test": "set NODE_ENV=test && nyc --reporter=html --reporter=text mocha ./Server/tests/*.js --timeout 80000 --exit --require @babel/register --require regenerator-runtime",
+    "start": "nodemon --exec babel-node ./Server/server.js",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
@@ -20,7 +21,13 @@
   "homepage": "https://github.com/ByiringiroYves/MyDiaryP6#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
-    "express": "^4.17.1"
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "coveralls": "^3.0.7",
+    "express": "^4.17.1",
+    "mocha": "^6.2.2",
+    "nyc": "^14.1.1",
+    "request": "^2.88.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.4",
@@ -33,6 +40,7 @@
     "eslint": "^6.5.1",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
+    "jasmine-node": "^3.0.0",
     "joi": "^14.3.1",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.24.0",

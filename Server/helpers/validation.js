@@ -12,6 +12,10 @@ class validation {
             lastName: joi.string().regex(/^[a-zA-Z]/).min(1).required(),
             password: joi.string().regex(/^[a-zA-Z]/).min(8).required(),
           }),
+          Entrychema: joi.object().keys({
+            title: joi.string().required(),
+            description: joi.string().required(),
+          }),
    }
   }
 }  

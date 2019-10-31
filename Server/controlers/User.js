@@ -6,11 +6,8 @@ import helpers from '../helpers/password';
 import validation from '../helpers/validation';
 import dotenv from 'dotenv';
 import joi from 'joi';
-
+dotenv.config();
 class User {
-    constructor(){
-        dotenv.config();
-    }
    static async createUser(req, res){
     joi.validate(req.body, validation.validator.userSchema).then((result) => {
               UserModel.getUserByEmail(req.body.email).then((user) => {
@@ -31,8 +28,8 @@ class User {
                         }
                         UserModel.addUser(user);
                         AuthCheck.generateToken(user).then((token) => {
-                              return res.status(200).json({
-                                  "status" : 200,
+                              return res.status(201).json({
+                                  "status" : 201,
                                   "message": "User created successefully",
                                   "data":{
                                       "token":token

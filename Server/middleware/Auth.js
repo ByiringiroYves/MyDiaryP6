@@ -1,10 +1,6 @@
 import jwt from 'jsonwebtoken';
-import dotenv from 'dotenv';
 import userModal from '../models/User';
-import { decode } from 'punycode';
-
-dotenv.config();
-class Auth {
+export class Auth {
   async verifyToken(req, res, next) {
     const token = req.headers['my-dialy-access-token'];
     if (!token) {
@@ -24,10 +20,8 @@ class Auth {
       next();
     });
   }
-
   async generateToken(user) {
-    const token = jwt.sign({user}, process.env.JWT_KEY_SECRET, { expiresIn: '7d' });
+    const token = jwt.sign({ user }, process.env.JWT_KEY_SECRET, { expiresIn: '7d' });
     return token;
   }
 }
-export default new Auth();
