@@ -1,38 +1,31 @@
-/* eslint-disable no-dupe-class-members */
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
-// import password from "../helpers/password";
-
 class User {
     constructor(){
      this.userList = [
-    //     {
-    //         "FirstName": "byiringiro yves",
-    //         "LastName": "yves",
-    //         "email": "ericRukundo@gmail.com",
-    //         "hashPassword": "$2b$06$Wu8cr2FE/KvEmrXjn.h1ieSIHuiC0tjua2MCAaSB4inkHf8G3P.M6"
-    //     },
-    //   {
-    //         "FirstName":"byiringiro yves",
-    //         "LastName": "yves",
-    //         "email":"eric@gmail.com",
-    //         "password":"asnggfghdszxvddbfbrgfsdgf"
-    //     },
-    //   {
-    //         "FirstName": "Aluwarenzi",
-    //         "LastName": "Augustin",
-    //         "email": "augustin250@gmail.com",
-    //         "hashPassword": "$2b$06$fPP3hzWhgrjmZX5VUxvXpeGt/.fgyuxJ78ptPPa5Lh6Tp0l1yE9au"
-    //     },
+        {
+            "id":"1edfggj4j5jkgfrtees1",
+            "firstName":"BYIRINGIRO",
+            "lastName":"Yves",
+            "email":"eric@gmail.com",
+            "password":"asddfvkjkjhjhggffdds"
+        },
+        {
+            "id":"00edf689ggjhjh87654j5jkgfrtees1",
+            "firstName":"BYIRINGIRO",
+            "lastName":"Stephane",
+            "email":"stephane@gmail.com",
+            "password":"asghfghghgfgdsfhgfftftd"
+        },
+        {
+            "id":"0edfggj4j5jkgfrtees1",
+            "firstName":"MUKUNZI",
+            "lastName":"Eric",
+            "email":"eric@gmail.com",
+            "password":"asddfvkjkjfhghhfggtgfgd"
+        },
      ]
-    //   this.user = []
+       this.user = []
     }
     
-//    addNewUser(user){
-//      // console.log(user);
-//       this.users.push(user);
-//       return user;
-//     }
     async addUser(user){
         if(!user){
             return false;
@@ -40,10 +33,8 @@ class User {
             this.userList.push(user);
             return true;
         }
+        
     }
-//    getUsers(){
-//       return this.users;
-//     }
 async getUserByEmail(email){
     return this.userList.find((user) => user.email === email);
    }
@@ -54,10 +45,6 @@ async getUserByEmail(email){
 async getUserById(id){
     return this.userList.find((user) => user.id === id)
 }   
-//    async findUser(email){
-//        let user = this.userList.find((user) => user.email === email)
-//        return !user ? null : user;
-//    }
 }
 
  

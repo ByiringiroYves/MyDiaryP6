@@ -21,5 +21,8 @@ const LoggOut = () =>{
     }
   }
 }
+const openPage = () => {
+  window.open("content.html"); 
+}
 // when user clicked on an entry
 

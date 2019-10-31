@@ -1,25 +1,30 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
-
-// import Password from '../helpers/password';
 import EntryModel from '../models/Entry';
-// import idgen from '../helpers/Id';
+import entriesu from '../models/Entry';
 import uuidv4 from 'uuid/v4';
+import moment from 'moment';
+
 class Entry {
 	static async NewEntry(req, res) {
-
 		const { title, description} = req.body;
-		// const Idgenerator = await idgen.Idgenerator();
-		EntryModel.addNewEntry({ title, description});
+		EntryModel.addNewEntry({ title, description, email:req.user.email, createdOn: new Date(), id: uuidv4()});
 		res.status(200).json({
 			status: 200,
 			data: {
 		    id: uuidv4(),
 			message: 'entry successfully created',
-	     	createdOn: new Date(),
-			 title,
-			 description
+			title,
+			description,
+			email: req.user.email,
+			createdOn : moment(new Date())
 			}
+		});
+	}
+	static async GetEntry(req, res){
+		const { id } = req.params;
+		const entry = await EntryModel.findEntryById(id);
+		res.status(200).json({
+			status: 200,
+			data: entry
 		});
 	}
 	static async GetEntries(req, res) {
@@ -31,7 +36,7 @@ class Entry {
 	}
 	static async DeleteEntry(req, res) {
 		const { id } = req.params;
-			EntryModel.removeEntry(id).then(() => {
+		    EntryModel.removeEntry(id).then(() => {
 			res.status(200).json({
 				status: 200,
 				data: {
@@ -40,19 +45,30 @@ class Entry {
 			});
 		});
 	}
-	static async ModifyEntry(req, res) {
-		const {title, description} = req.body;
-		const { id } = req.params;
-		const entry = await EntryModel.modifyEntry(id).then(() => {
-			res.status(200).json({
-				status: 200,
-				data: {
-				message:'entry successfully Edited'	
-				}
-			})
-		})
-		   
-	}
+	static async Modify(req, res){
+		// const {entry} = 
+		// const {title, description} = req.body; 
+		const {email} = req.user;
+		console.log(email);
+		const { id } = req.params; 
+		// const entry = await 
+		// const {title, description} = req.body;
+		// const position = await EntryModel.getEntryPosition(id, req.user.email); 
+		const Modify = {
+			id, 
+			title: req.body.title,
+			description: req.body.description,
+			email: req.user.email,
+			UpdatedOn: new Date()
+		};
+		await EntryModel.updateEntry(id, email,Modify);
+		return res.status(200).json({
+			 status: 200,
+			  Modify
+
+		});
+		};
+
 }
     
 

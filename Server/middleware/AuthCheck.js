@@ -1,10 +1,7 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable class-methods-use-this */
-/* eslint-disable linebreak-style */
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import userModal from '../models/User';
+import { decode } from 'punycode';
 
 dotenv.config();
 class Auth {
@@ -29,7 +26,7 @@ class Auth {
   }
 
   async generateToken(user) {
-    const token = jwt.sign({ user }, process.env.JWT_KEY_SECRET, { expiresIn: '7d' });
+    const token = jwt.sign({user}, process.env.JWT_KEY_SECRET, { expiresIn: '7d' });
     return token;
   }
 }
