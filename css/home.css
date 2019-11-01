@@ -10,7 +10,7 @@ body{
 }
 
 .all-body-content{
-  height: 400px;
+  height: 600px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: -webkit-flex;
@@ -33,12 +33,15 @@ body{
   height: 800px;
   width: 100%;
   float: left;
+
+  /* top:0px; */
 }
 .head{
-  margin-top: 200px;
+  margin-top: 100px;
   min-height: 60px;
   width: 100%;
   background-color: var(--rayol-primary-color);
+  /* margin-top:0px; */
   display: flex;
 }
 
@@ -175,12 +178,15 @@ display:none;
 display:none; 
 }
 .profile{
+  /* border: 1px solid red; */
   min-height: 60px;
   width: 100%;
   margin-top: 0px;
   cursor: pointer;
 }
 .profile1{
+
+  /* border: 1px solid red; */
   min-height: 60px;
   width: 100%;
   margin-top: 0px;
@@ -453,11 +459,7 @@ cursor: pointer;
     background-color: white;
     background-color: white;
     width: 98%;
-    border-top: 5px solid gray;
-    border-left: 2px solid gray;
-    border-right: 2px solid gray;
-    border-bottom: 2px solid gray;
-
+    border-top: 3px solid gray;
     border-radius: 5px;
   }
   table{
@@ -480,10 +482,9 @@ cursor: pointer;
   }
   tr{
     width: 100px;
-    height: 40px;
+    height: 44px;
     margin-left: 10px;
     cursor: pointer;
-    border:2px solid grey;
   }
   .td{
     border: 1px solid green;
@@ -530,6 +531,9 @@ cursor: pointer;
     display: -webkit-flex;
     display: contents;
     justify-content: center;
+    /* -webkit-box-shadow:0px 0px 6px var(--rayal-white-borders);
+    -moz-box-shadow:0px 0px 6px var(--rayal-white-borders);
+   */
   }
   
   .icon-reflesh{
