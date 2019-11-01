@@ -38,7 +38,7 @@ describe("User:", () => {
         }
       );
     });
-    it("Should Return 201 if client user is  created ", done => {
+    it("Should Return 400 if client user is  created ", done => {
       Request.post(
         `${serverUrl}/api/v1/auth/signup`,
         {
@@ -61,7 +61,7 @@ describe("User:", () => {
         }
       );
     });
-    it("Should Return 201 if client user is  created ", done => {
+    it("Should Return 400 if client user is already created ", done => {
       Request.post(
         `${serverUrl}/api/v1/auth/signup`,
         {
