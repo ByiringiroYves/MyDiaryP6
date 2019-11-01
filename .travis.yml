@@ -7,13 +7,13 @@ branches:
     - develop
 install:
   - npm install
-  - npm install -g coveralls
+  - npm install -g coverage
 cache:
   directories:
     - "node_modules"
 script:
   - npm run test
 after_success:
-  - npm run coveralls
+  - npm run coverage
 
 
