@@ -2,9 +2,12 @@ import EntryModel from '../models/Entry';
 import entriesu from '../models/Entry';
 import uuidv4 from 'uuid/v4';
 import moment from 'moment';
+import validation from '../helpers/validation';
+import joi from 'joi';
 
 class Entry {
 	static async NewEntry(req, res) {
+		joi.validate(req.body, validation.validator.Entrychema).then((result) => {		
 		const { title, description} = req.body;
 		EntryModel.addNewEntry({ title, description, email:req.user.email, createdOn: new Date(), id: uuidv4()});
 		res.status(200).json({
@@ -18,7 +21,11 @@ class Entry {
 			createdOn : moment(new Date())
 			}
 		});
-	}
+	}).catch(error => res.send({
+		"status": 400,
+		"error" : {"message": error.details[0].message.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '')}
+	}));
+}
 	static async GetEntry(req, res){
 		const { id } = req.params;
 		const entry = await EntryModel.findEntryById(id);

@@ -84,8 +84,8 @@ describe("User:", () => {
         }
       );
     })
-    //login
-    it("Should Return 201 if client user is  created ", done => {
+    //login tests
+    it("Should Return 200 if client user is  signed in ", done => {
       Request.post(
         `${serverUrl}/api/v1/auth/signin`,
         {
