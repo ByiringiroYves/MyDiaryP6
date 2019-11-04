@@ -76,15 +76,6 @@ body{
 	 justify-content: center;
 	 align-items: center;
 }
-.link-div svg{
-  fill: var(--rayal-white);;
-}
-.link-div a:hover{
- color: var(--rayal-white);
-}
-.link-focused{
- color: var(--rayal-white);
-}
 .buttons-join{
   float: right;
    display: inline-block;
@@ -97,9 +88,6 @@ body{
    display: flex;
    justify-content: center;
    align-items: center;
-}
-.buttons-join.login{
-
 }
 .buttons-join.login button{
   color: var(--rayol-primary-color);

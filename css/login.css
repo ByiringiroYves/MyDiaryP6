@@ -2,7 +2,7 @@
 @import url(preloader.css);
 @font-face {
     font-family: 'Roboto-Medium';
-    src: url("../assets/fonts/Roboto-Medium.ttf");
+    src: url("../assets/fonts/Roboto-Medium.ttf"); 
 }
 body{
   margin: 0;
@@ -52,8 +52,6 @@ body{
    border-radius: var(--border-radius);
    -webkit-box-shadow:0px 0px 6px var(--rayal-white-borders);
   -moz-box-shadow:0px 0px 6px var(--rayal-white-borders);
- opacity: 0.7;
-filter: alpha(opacity=70);
 }
 .task-content blockquote {
   border-color: #ddd;
@@ -204,8 +202,6 @@ textarea:focus{
 		  background-color: var(--rayal-white-sec);
 		  border: 0px solid #e3e3e3;
 		   border-radius:0;
-		 opacity: 0.8;
-		filter: alpha(opacity=80);
 		}
 }
 
