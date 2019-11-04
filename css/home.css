@@ -10,7 +10,7 @@ body{
 }
 
 .all-body-content{
-  height: 600px;
+  height: 400px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: -webkit-flex;
@@ -33,15 +33,12 @@ body{
   height: 800px;
   width: 100%;
   float: left;
-
-  /* top:0px; */
 }
 .head{
-  margin-top: 100px;
+  margin-top: 200px;
   min-height: 60px;
   width: 100%;
   background-color: var(--rayol-primary-color);
-  /* margin-top:0px; */
   display: flex;
 }
 
@@ -178,15 +175,12 @@ display:none;
 display:none; 
 }
 .profile{
-  /* border: 1px solid red; */
   min-height: 60px;
   width: 100%;
   margin-top: 0px;
   cursor: pointer;
 }
 .profile1{
-
-  /* border: 1px solid red; */
   min-height: 60px;
   width: 100%;
   margin-top: 0px;
@@ -392,7 +386,7 @@ cursor: pointer;
     cursor: pointer;
   }
   .content-body{
-    height: 800px;
+    min-height: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: -webkit-flex;
@@ -459,7 +453,11 @@ cursor: pointer;
     background-color: white;
     background-color: white;
     width: 98%;
-    border-top: 3px solid gray;
+    border-top: 5px solid gray;
+    border-left: 2px solid gray;
+    border-right: 2px solid gray;
+    border-bottom: 2px solid gray;
+
     border-radius: 5px;
   }
   table{
@@ -482,9 +480,10 @@ cursor: pointer;
   }
   tr{
     width: 100px;
-    height: 44px;
+    height: 40px;
     margin-left: 10px;
     cursor: pointer;
+    border:2px solid grey;
   }
   .td{
     border: 1px solid green;
@@ -531,9 +530,6 @@ cursor: pointer;
     display: -webkit-flex;
     display: contents;
     justify-content: center;
-    /* -webkit-box-shadow:0px 0px 6px var(--rayal-white-borders);
-    -moz-box-shadow:0px 0px 6px var(--rayal-white-borders);
-   */
   }
   
   .icon-reflesh{
@@ -680,6 +676,8 @@ textarea:focus{
 	display: -webkit-flex;
 	justify-content: center;
   align-items: center;
+  clear: both;
+  margin-top: 300px;
   /* padding: 40px; */
 	position: relative;
 	z-index: 1000;
@@ -748,4 +746,3 @@ width: extend-to-zoom;
   width: extend-to-zoom;
   zoom: 1.o;
 }
-
