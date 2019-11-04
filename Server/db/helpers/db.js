@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
-import connection from './connection/connection';
-const pool = connection.getPoolConnection();
+import { Connection } from '../connection/connection';
+const pool = Connection();
 dotenv.config();
 export const query = (text, params) => {
     return new Promise((resolve, reject) => {

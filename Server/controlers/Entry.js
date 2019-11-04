@@ -8,17 +8,19 @@ import joi from 'joi';
 class Entry {
 	static async NewEntry(req, res) {
 		joi.validate(req.body, validation.validator.Entrychema).then((result) => {		
-		const { title, description} = req.body;
-		EntryModel.addNewEntry({ title, description, email:req.user.email, createdOn: new Date(), id: uuidv4()});
+		const entry = {
+			id: uuidv4(),
+			title:req.body.title,
+			description: req.body.description,
+			email: req.user.email,
+			createdOn: moment(new Date())
+		};
+		const response = EntryModel.addNewEntry(entry);
 		res.status(200).json({
 			status: 200,
 			data: {
-		    id: uuidv4(),
 			message: 'entry successfully created',
-			title,
-			description,
-			email: req.user.email,
-			createdOn : moment(new Date())
+	        response 
 			}
 		});
 	}).catch(error => res.send({
