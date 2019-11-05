@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "set NODE_ENV=test && nyc --reporter=html --reporter=text mocha ./Server/tests/*.js --timeout 80000 --exit --require @babel/register --require regenerator-runtime",
+    "test": "set TEST_DATABASE_URL=test && nyc --reporter=html --reporter=text mocha ./Server/tests/*.js --timeout 80000 --exit --require @babel/register --require regenerator-runtime",
     "start": "nodemon --exec babel-node ./Server/server.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },

@@ -17,7 +17,7 @@ describe("User:", () => {
   describe("POST User signup /auth/signup:", () => {
     it("Should Return 201 if client user is  created ", done => {
       Request.post(
-        `${serverUrl}/api/v1/auth/signup`,
+        `${serverUrl}/api/v2/auth/signup`,
         {
           json: true,
           form: {
@@ -38,9 +38,9 @@ describe("User:", () => {
         }
       );
     });
-    it("Should Return 400 if client user is  created ", done => {
+    it("Should Return 400 if client user is already created", done => {
       Request.post(
-        `${serverUrl}/api/v1/auth/signup`,
+        `${serverUrl}/api/v2/auth/signup`,
         {
           json: true,
           form: {
@@ -61,33 +61,11 @@ describe("User:", () => {
         }
       );
     });
-    it("Should Return 400 if client user is already created ", done => {
-      Request.post(
-        `${serverUrl}/api/v1/auth/signup`,
-        {
-          json: true,
-          form: {
-            firstName: "BYIRINGIRO",
-            lastName: "Yves",
-            email: "erich@gmail.com",
-            password: "behahjkjhve23456"
-          }
-        },
-        (err, res, body) => {
-          if (!err) {
-            expect(body).to.be.an("object");
-            expect(body)
-              .to.have.property("status")
-              .eql(400);
-          }
-          done();
-        }
-      );
-    })
+   
     //login tests
     it("Should Return 200 if client user is  signed in ", done => {
       Request.post(
-        `${serverUrl}/api/v1/auth/signin`,
+        `${serverUrl}/api/v2/auth/signin`,
         {
           json: true,
           form: {
@@ -101,6 +79,48 @@ describe("User:", () => {
             expect(body)
               .to.have.property("status")
               .eql(200);
+          }
+          done();
+        }
+      );
+    });
+    it("Should Return 401 if client user is not exists ", done => {
+      Request.post(
+        `${serverUrl}/api/v2/auth/signin`,
+        {
+          json: true,
+          form: {
+            email: "erich@gmail.com",
+            password: "behahjkjhve23456"
+          }
+        },
+        (err, res, body) => {
+          if (!err) {
+            expect(body).to.be.an("object");
+            expect(body)
+              .to.have.property("status")
+              .eql(401);
+          }
+          done();
+        }
+      );
+    });
+    it("Should Return 400 if client user password is invalid ", done => {
+      Request.post(
+        `${serverUrl}/api/v2/auth/signin`,
+        {
+          json: true,
+          form: {
+            email: "erich@gmail.com",
+            password: "behahjk"
+          }
+        },
+        (err, res, body) => {
+          if (!err) {
+            expect(body).to.be.an("object");
+            expect(body)
+              .to.have.property("status")
+              .eql(400);
           }
           done();
         }
