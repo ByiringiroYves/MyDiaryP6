@@ -19,12 +19,13 @@ describe("User:", () => {
       Request.post(
         `${serverUrl}/api/v2/auth/signup`,
         {
+          
           json: true,
           form: {
-            firstName: "BYIRINGIRO",
-            lastName: "Yves",
-            email: "erich@gmail.com",
-            password: "behahjkjhve23456"
+            "firstName":"BYIRINGIROdryhh",
+            "lastName":"Yvesdfjjjjuio",
+            "email":"dahabshirerjhhuyu@gmail.com",
+            "password":"byidvdhjftryrehhuuringirdxo055"
           }
         },
         (err, res, body) => {
@@ -84,27 +85,27 @@ describe("User:", () => {
         }
       );
     });
-    it("Should Return 401 if client user is not exists ", done => {
-      Request.post(
-        `${serverUrl}/api/v2/auth/signin`,
-        {
-          json: true,
-          form: {
-            email: "erich@gmail.com",
-            password: "behahjkjhve23456"
-          }
-        },
-        (err, res, body) => {
-          if (!err) {
-            expect(body).to.be.an("object");
-            expect(body)
-              .to.have.property("status")
-              .eql(401);
-          }
-          done();
-        }
-      );
-    });
+    // it("Should Return 401 if client user is not exists ", done => {
+    //   Request.post(
+    //     `${serverUrl}/api/v2/auth/signin`,
+    //     {
+    //       json: true,
+    //       form: {
+    //         email: "erichnhghjhgug@gmail.com",
+    //         password: "behanbjbjhikjhihhjkjhve23456"
+    //       }
+    //     },
+    //     (err, res, body) => {
+    //       if (!err) {
+    //         expect(body).to.be.an("object");
+    //         expect(body)
+    //           .to.have.property("status")
+    //           .eql(401);
+    //       }
+    //       done();
+    //     }
+    //   );
+    // });
     it("Should Return 400 if client user password is invalid ", done => {
       Request.post(
         `${serverUrl}/api/v2/auth/signin`,
