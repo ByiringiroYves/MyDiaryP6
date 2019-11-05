@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">47.06% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>17/17</span>
+        <span class='fraction'>8/17</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,21 +30,21 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>5/5</span>
+        <span class='fraction'>0/5</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">47.06% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>17/17</span>
+        <span class='fraction'>8/17</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line low'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -104,8 +104,8 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -113,9 +113,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -126,12 +126,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -153,8 +153,8 @@ import dotenv from "dotenv";
 dotenv.config();
 class User {
   static async createUser(req, res) {
-    helpers.hashPassword(req.body.password).then(pwd =&gt; {
-      const user = {
+<span class="cstat-no" title="statement not covered" >    helpers.h</span>ashPassword(req.body.password).then(<span class="fstat-no" title="function not covered" >pwd </span>=&gt; {
+      const user = <span class="cstat-no" title="statement not covered" >{</span>
         id: uuidv4(),
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -162,9 +162,9 @@ class User {
         email: req.body.email,
         createdOn: moment(new Date())
       };
-      const responce = UserModel.addUser(user);
-      AuthCheck.generateToken(user).then(token =&gt; {
-        return res.status(201).json({
+      const responce = <span class="cstat-no" title="statement not covered" >UserModel.a</span>ddUser(user);
+<span class="cstat-no" title="statement not covered" >      AuthCheck.g</span>enerateToken(user).then(<span class="fstat-no" title="function not covered" >token </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >        return r</span>es.status(201).json({
           status: 201,
           message: "User created successefully",
           data: {
@@ -175,12 +175,12 @@ class User {
     });
   }
   static async login(req, res) {
-    UserModel.getUserByEmail(req.body.email).then(user =&gt; {
-      helpers
+<span class="cstat-no" title="statement not covered" >    UserModel.g</span>etUserByEmail(req.body.email).then(<span class="fstat-no" title="function not covered" >user </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >      helpers</span>
         .isCorrectPassword(req.body.password, user[0].password)
-        .then(result =&gt; {
-          AuthCheck.generateToken(user).then(token =&gt; {
-            return res.status(200).send({
+        .then(<span class="fstat-no" title="function not covered" >result </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >          AuthCheck.g</span>enerateToken(user).then(<span class="fstat-no" title="function not covered" >token </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            return r</span>es.status(200).send({
               status: 200,
               data: {
                 token: token
@@ -199,7 +199,7 @@ export default User;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Nov 05 2019 13:48:41 GMT+0200 (South Africa Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Nov 05 2019 17:21:25 GMT+0200 (South Africa Standard Time)
 </div>
 </div>
 <script src="..\..\prettify.js"></script>

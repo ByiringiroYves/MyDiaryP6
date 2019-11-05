@@ -1,13 +1,32 @@
 import chai, { expect } from "chai";
 import run from "../server";
 import Request from "request";
+import db from '../db/helpers/db';
 import chaihttp from "chai-http";
+import {createTables} from '../db/migrations/db';
+import {
+  loginUser,
+  loginUserWrongPass,
+  newUser,
+  wrongNewUser,
+  testUser,
+  loginUserNotFound,
+} from './data/data'
+import {
+  CREATE_USER
+} from '../db/helpers/query'
 const serverUrl = "http://localhost:3400";
 chai.use(chaihttp);
 describe("User:", () => {
   let server;
   before(async done => {
-    server = run(3400);
+    server = run(4040);
+    createTables().then(() => {
+      Helper.hashPassword(testUser.password).then((pass) => {
+        const values = [userId, testUser.firstName, testUser.lastName, testUser.email, pass, moment(new Date()), moment(new Date()), true];
+        db.query(CREATE_USER,values);
+      });
+    });
     done();
   });
   after(done => {
@@ -15,43 +34,10 @@ describe("User:", () => {
     done();
   });
   describe("POST User signup /auth/signup:", () => {
-    it("Should Return 201 if client user is  created ", done => {
+    it("Should Return Error if wrong input", done => {
       Request.post(
         `${serverUrl}/api/v2/auth/signup`,
-        {
-          
-          json: true,
-          form: {
-            "firstName":"BYIRINGIROdryhh",
-            "lastName":"Yvesdfjjjjuio",
-            "email":"dahabshirerjhhuyu@gmail.com",
-            "password":"byidvdhjftryrehhuuringirdxo055"
-          }
-        },
-        (err, res, body) => {
-          if (!err) {
-            expect(body).to.be.an("object");
-            expect(body)
-              .to.have.property("status")
-              .eql(201);
-          }
-          done();
-        }
-      );
-    });
-    it("Should Return 400 if client user is already created", done => {
-      Request.post(
-        `${serverUrl}/api/v2/auth/signup`,
-        {
-          json: true,
-          form: {
-            firstName: "BYIRINGIRO",
-            lastName: "Yves",
-            email: "erichgmail.com",
-            password: "behahjkjhve23456"
-          }
-        },
-        (err, res, body) => {
+        {json: true, form: wrongNewUser},(err, res, body) => {
           if (!err) {
             expect(body).to.be.an("object");
             expect(body)
@@ -62,19 +48,25 @@ describe("User:", () => {
         }
       );
     });
-   
-    //login tests
-    it("Should Return 200 if client user is  signed in ", done => {
+    it("Should Return 400 if client user is already created", done => {
+      Request.post(
+        `${serverUrl}/api/v2/auth/signup`,
+        {json: true, form: testUser },(err, res, body) => {
+          if (!err) {
+            expect(body).to.be.an("object");
+            expect(body)
+              .to.have.property("status")
+              .eql(400);
+          }
+          done();
+        }
+      );
+    });
+
+    it("Should Return 200 if client user is created ", done => {
       Request.post(
         `${serverUrl}/api/v2/auth/signin`,
-        {
-          json: true,
-          form: {
-            email: "erich@gmail.com",
-            password: "behahjkjhve23456"
-          }
-        },
-        (err, res, body) => {
+        {json: true, form: newUser},(err, res, body) => {
           if (!err) {
             expect(body).to.be.an("object");
             expect(body)
@@ -85,43 +77,48 @@ describe("User:", () => {
         }
       );
     });
-    // it("Should Return 401 if client user is not exists ", done => {
-    //   Request.post(
-    //     `${serverUrl}/api/v2/auth/signin`,
-    //     {
-    //       json: true,
-    //       form: {
-    //         email: "erichnhghjhgug@gmail.com",
-    //         password: "behanbjbjhikjhihhjkjhve23456"
-    //       }
-    //     },
-    //     (err, res, body) => {
-    //       if (!err) {
-    //         expect(body).to.be.an("object");
-    //         expect(body)
-    //           .to.have.property("status")
-    //           .eql(401);
-    //       }
-    //       done();
-    //     }
-    //   );
-    // });
-    it("Should Return 400 if client user password is invalid ", done => {
+
+
+    //login tests
+
+
+    it("Should Return 200 if client user is  signed in ", done => {
       Request.post(
         `${serverUrl}/api/v2/auth/signin`,
-        {
-          json: true,
-          form: {
-            email: "erich@gmail.com",
-            password: "behahjk"
+        {json: true,form: loginUser},(err, res, body) => {
+          if (!err) {
+            expect(body).to.be.an("object");
+            expect(body)
+              .to.have.property("status")
+              .eql(200);
           }
-        },
-        (err, res, body) => {
+          done();
+        }
+      );
+    });
+    it("Should Return 400 when password is wrong ", done => {
+      Request.post(
+        `${serverUrl}/api/v2/auth/signin`,
+        {json: true,form: loginUserWrongPass},(err, res, body) => {
           if (!err) {
             expect(body).to.be.an("object");
             expect(body)
               .to.have.property("status")
               .eql(400);
+          }
+          done();
+        }
+      );
+    });
+    it("Should Return 404 if client user is not found ", done => {
+      Request.post(
+        `${serverUrl}/api/v2/auth/signin`,
+        {json: true,form: loginUserNotFound},(err, res, body) => {
+          if (!err) {
+            expect(body).to.be.an("object");
+            expect(body)
+              .to.have.property("status")
+              .eql(404);
           }
           done();
         }
