@@ -3,7 +3,6 @@ import chai, { expect } from "chai";
 import run from "../server";
 import Request from "request";
 import uuidv4 from 'uuid/v4';
-// import db from '../db/helpers/db';
 import {query} from '../db/helpers/db';
 import chaihttp from "chai-http";
 import helpers from "../helpers/password";
@@ -45,9 +44,7 @@ describe("User:", () => {
         {json: true, form: wrongNewUser},(err, res, body) => {
           if (!err) {
             expect(body).to.be.an("object");
-            expect(body)
-              .to.have.property("status")
-              .eql(400);
+            expect(body).to.have.property("status").eql(400);
           }
           done();
         }

@@ -7,7 +7,7 @@ import dotenv from "dotenv";
 dotenv.config();
 class User {
   static async createUser(req, res) {
-    helpers.hashPassword(req.body.password).then(pwd => {
+    helpers.hashPassword(req.body.password).then(async pwd => {
       const user = {
         id: uuidv4(),
         firstName: req.body.firstName,
@@ -16,14 +16,12 @@ class User {
         email: req.body.email,
         createdOn: moment(new Date())
       };
-      const responce = UserModel.addUser(user);
+      const responce = await UserModel.addUser(user);
       AuthCheck.generateToken(user).then(token => {
         return res.status(201).json({
           status: 201,
           message: "User created successefully",
-          data: {
-            token: token
-          }
+          user: responce
         });
       });
     });
