@@ -1,8 +1,12 @@
+import moment from 'moment';
 import chai, { expect } from "chai";
 import run from "../server";
 import Request from "request";
-import db from '../db/helpers/db';
+import uuidv4 from 'uuid/v4';
+// import db from '../db/helpers/db';
+import {query} from '../db/helpers/db';
 import chaihttp from "chai-http";
+import helpers from "../helpers/password";
 import {createTables} from '../db/migrations/db';
 import {
   loginUser,
@@ -19,12 +23,13 @@ const serverUrl = "http://localhost:3400";
 chai.use(chaihttp);
 describe("User:", () => {
   let server;
+  let userId=uuidv4();
   before(async done => {
     server = run(4040);
     createTables().then(() => {
-      Helper.hashPassword(testUser.password).then((pass) => {
-        const values = [userId, testUser.firstName, testUser.lastName, testUser.email, pass, moment(new Date()), moment(new Date()), true];
-        db.query(CREATE_USER,values);
+      helpers.hashPassword(testUser.password).then((pass) => {
+        const values = [userId, testUser.firstName, testUser.lastName, testUser.email, pass, moment(new Date())];
+        query(CREATE_USER,values);
       });
     });
     done();
