@@ -26,7 +26,7 @@ describe("Entry:", () => {
           json:true, headers: {
             'my-dialy-access-token':`${token}cjhjujhukh`,
           }, form:{title: 'myDiary',description :'zasgdsffngm'}},(err, res, body) => {
-            if(err){
+            if(!err){
               expect(body).to.be.an('object');
               expect(body).to.have.property('error');
               expect(body).to.have.property('status').eql(400);
