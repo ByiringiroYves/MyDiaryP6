@@ -1,76 +1,43 @@
-import { updateLocale } from "moment";
-
+import {  
+  CREATE_ENTRY, 
+  GET_ENTRY_BY_EMAIL, 
+  GET_ENTRY_BY_ID, 
+  GET_ENTRIES,
+  UPDATE_ENTRIES,
+  DELETE_ENTRY
+} from '../db/helpers/query';
+import { query } from '../db/helpers/db';
 class Entry {
-    constructor(){
-     this.entries = [
-       {
-         
-        "id": "cedcb35f-6618-4a86-ab68-6cf92c0b8577",
-        "title": "my",
-        "description": "during ngjhgkhj;ljk;luioy",
-        "email": "erich@gmail.com",
-        "UpdatedOn": "2019-10-31T19:04:55.649Z"
-       },
-       { 
-         id: "3e",
-         title:"my likely products",
-         description:"in my life i was strongly affected by ambitions of being a famous electronician",
-         "email":"erichhjkhbv@gmail.com",
-       },
-       {
-       "title": "my life gjvugyugyugtug",
-            "description": "during the day vghcfyctfcf",
-            "email": "erich@gmail.com",
-            "createdOn": "2019-10-31T19:03:49.915Z",
-            "id": "cedcb35f-6618-4a86-ab68-6cf92c0b8577"
-        }   
-     ]
-    }
-
-    async addNewEntry(entry){
-      this.entries.push(entry);
-      return entry;
-    }
-    async getEntries(email){
-      return  this.entries.filter((entry) => entry.email === email);
-     
-    }
-    async findEntry(parseInt){
-      return this.entries.find((entry)=> entry.id === parseInt(req.params.id, 10));
-    }
-   async findEntryById(id){
-       return this.entries.find((entry) => entry.id === id);
-   } 
-
-   async removeEntry(id){
-    let newEntries = []
-    this.entries.forEach(element => {
-      if(element.id !== id){
-        newEntries.push(element);
-      }
-    });
-    this.entries = newEntries;
-    return newEntries;
+  async addEntry(entry) {
+    const values = [entry.id, entry.title, entry.description, entry.email, entry.createdOn]
+    const res = await query(CREATE_ENTRY, values);
+    return res.rows;
   }
-  async getEntryPosition(id, email){
+  async getEntryByEmail(email) {
+    const res = await query(GET_ENTRY_BY_EMAIL, [email]);
+    return res.rows;
+}
+async findEntryById(id){
+  const res = await query(GET_ENTRY_BY_ID, [id]);
+  return res.rows;
+} 
+async getEntries(email){
+  const res = await query(GET_ENTRIES, [email]);
+  return res.rows
+}
+async updateEntry(Entry){
+  const values = [Entry.id, Entry.title, Entry.description, Entry.email, Entry.createdOn]
+  const res = await query(UPDATE_ENTRIES, values);
+  return res.rows;
+}
+async removeEntry(id){
+  const res = await query(DELETE_ENTRY, [id]);
+  return res.rows;
+}
+}
+
+
     
-    let possition = 0;
-    let ent = await this.getEntries(email); 
-   for(let i=0; i<ent.length; i++){
-    if(id === ent[i].id){  
-        possition = i;
-        break;
-    }
-   }
-   return possition
-   
-  }
-  async updateEntry(id, email,Modify){ 
-    console.log(id, email);
-    const poss = this.getEntryPosition(id, email);
-    return this.entries.splice(poss, 1,              Modify);
-    }
-}  
 
 
  export default new Entry();

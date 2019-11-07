@@ -2,7 +2,7 @@ import EntryModel from '../models/Entry';
  class Entry {
 	static async entryExists(req, res, next) {
 		const { id } = req.params;
-		const { email } = req.user;
+		const { email } = req.user[0];
 		const entry = await EntryModel.findEntryById(id);
 		if (!entry) {
 			res.status(404).json({
@@ -12,11 +12,12 @@ import EntryModel from '../models/Entry';
 				}
 			});
 		}
-		if (entry.email !== email) {
+		if (entry[0].email !== email) {
+	
 			res.status(403).json({
 				status: 403,
 				error: {
-					message: 'Access denied'
+					message: 'Access denied',
 				}
 			});
 		}

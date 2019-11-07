@@ -1,49 +1,60 @@
-import EntryModel from '../models/Entry';
-import entriesu from '../models/Entry';
-import uuidv4 from 'uuid/v4';
-import moment from 'moment';
-import validation from '../helpers/validation';
-import joi from 'joi';
-
+import EntryModel from "../models/Entry";
+import uuidv4 from "uuid/v4";
+import moment from "moment";
 class Entry {
-	static async NewEntry(req, res) {
-		joi.validate(req.body, validation.validator.Entrychema).then((result) => {		
-		const entry = {
-			id: uuidv4(),
-			title:req.body.title,
-			description: req.body.description,
-			email: req.user.email,
-			createdOn: moment(new Date())
-		};
-		const response = EntryModel.addNewEntry(entry);
-		res.status(200).json({
-			status: 200,
-			data: {
-			message: 'entry successfully created',
-	        response 
-			}
-		});
-	}).catch(error => res.send({
-		"status": 400,
-		"error" : {"message": error.details[0].message.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '')}
-	}));
-}
-	static async GetEntry(req, res){
+  static async NewEntry(req, res) {
+    const entry = {
+      id: uuidv4(),
+      title: req.body.title,
+      description: req.body.description,
+      email: req.user[0].email,
+      createdOn: moment(new Date())
+    };
+    const response = await EntryModel.addEntry(entry);
+    return res.status(200).send({
+      status: 200,
+      data: {
+        message: "entry successfully created",
+        entry: response
+      }
+    });
+  }
+  static async GetEntry(req, res){
 		const { id } = req.params;
 		const entry = await EntryModel.findEntryById(id);
 		res.status(200).json({
 			status: 200,
 			data: entry
 		});
-	}
-	static async GetEntries(req, res) {
-		const entries = await EntryModel.getEntries(req.user.email);
+  }
+  static async GetEntries(req, res) {
+		const entries = await EntryModel.getEntries(req.user[0].email);
 		res.status(200).json({
 			status: 200,
 			data: entries
 		});
-	}
-	static async DeleteEntry(req, res) {
+}
+static async Modify(req, res){ 
+  const {email} = req.user[0];
+  console.log(email);
+  const { id } = req.params; 
+  const Entry = {
+    id, 
+    title: req.body.title,
+    description: req.body.description,
+    email: req.user[0].email,
+    createdOn: new Date()
+  };
+  await EntryModel.updateEntry(Entry);
+  return res.status(200).json({
+     status: 200,
+      data:{
+        message: "entry successfully edited",
+        Entry
+      } 
+  });
+  };
+  static async DeleteEntry(req, res) {
 		const { id } = req.params;
 		    EntryModel.removeEntry(id).then(() => {
 			res.status(200).json({
@@ -54,31 +65,6 @@ class Entry {
 			});
 		});
 	}
-	static async Modify(req, res){
-		// const {entry} = 
-		// const {title, description} = req.body; 
-		const {email} = req.user;
-		console.log(email);
-		const { id } = req.params; 
-		// const entry = await 
-		// const {title, description} = req.body;
-		// const position = await EntryModel.getEntryPosition(id, req.user.email); 
-		const Modify = {
-			id, 
-			title: req.body.title,
-			description: req.body.description,
-			email: req.user.email,
-			UpdatedOn: new Date()
-		};
-		await EntryModel.updateEntry(id, email,Modify);
-		return res.status(200).json({
-			 status: 200,
-			  Modify
-
-		});
-		};
-
 }
-    
 
 export default Entry;

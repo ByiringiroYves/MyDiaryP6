@@ -14,7 +14,7 @@ class Auth {
       });
     }
     const decoded = await jwt.verify(token, process.env.JWT_KEY_SECRET);
-    userModal.getUserByEmail(decoded.user.email).then((user) => {
+    userModal.getUserByEmail(decoded.user[0].email).then((user) => {
       if (!user) {
         res.status(400).send({
           message: 'Invalid User',
