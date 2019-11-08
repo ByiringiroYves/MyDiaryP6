@@ -7,7 +7,7 @@
 body{
   margin: 0;
   height: 97.7vh;
-  /* background: url("../assets/images/background.png")no-repeat center center fixed; */
+  background:url("../assets/images/back5.jpg")no-repeat center center fixed;
   background-color: white;;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -204,6 +204,7 @@ textarea:focus{
 		   border-radius:0;
 		}
 }
+
 
 /* uncontroled css*/
 /*For header*/

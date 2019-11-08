@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" href="../assets/images/logostu.png" type="image/x-icon">
+  <link rel="stylesheet" href="../css/home.css">
+  <link rel="stylesheet" href="../css/defoult_them.css">
+  <link rel="stylesheet" href="../css/preloader.css">
+  <link rel="stylesheet" href="../css/login.css">
+  <link rel="stylesheet" href="../css/signup.css">
+  <link rel="stylesheet" href="../css/help.css">
+  <link rel="stylesheet" href="../css/reminder.css">
+
+  <title>MyDiary|Home</title>
+</head>
+<body>
+
+  <!-- preloader start -->
+
+  <div id="loader" class="preloader hidden  preloader-show">
+      <img src="../assets/images/loader.gif" alt="loading.../" >
+    </div>
+
+  <!-- preloader End -->
+
+  
+
+   <!-- navigation part start   -->
+
+   <div  class="left-dir " id="navigation">
+      <div class="profile" style="margin-top: 0px; cursor: pointer;"">
+        <button class="journal-btn" onclick="LoggOut()" style="cursor: pointer;"><span class="journal-font" ><b><strong>BYIRINGIRO's Journal</strong></b></span><br><span class="logg">Logged in</span></button>
+      </div>
+      <div class="logout-div hide" id="out"> 
+        <a href="login.html"><button class="logout"><span class="journal-font"><span class="logout-text">Logout(BYIRINGIRO Yves)</button></a> 
+      </div> 
+      <div class="seach-entries-div">
+        <img src="../assets/images/icons/searc.png" alt="" class="icon-search"><input type="text" class="search-input" placeholder="search journal..."/>
+      </div> 
+      <div class="add-entries-div">
+        <a href="NewEntry.html"><button class="add-btn"><img src="../assets/images/icons/add.png" alt="" class="icon-add"> <span class="add-text">New Entry</span> </button></a>
+      </div> 
+      <div class="Entry-list-div">
+          <a href="EntryList.html"><button class="list-btn"><img src="../assets/images/icons/list3.png" alt="" class="icon-list"> <span class="list-text">View all Entries</span> </button></a>
+      </div> 
+      <div class="Entry-list-div">
+        <a href="EntryList.html"><button class="list-btn"><img src="../assets/images/icons/list3.png" alt="" class="icon-list"> <span class="list-text">View all Entries</span> </button></a>
+    </div> 
+      <div class="notification-div">
+        <a href="reminder.html"><button class="notif-btn"><img src="../assets/images/reminder.png" alt="" class="not-img"><span class="notif-text">Reminder</span> <span class="not-num"><b><strong></strong></b></span></button></a>
+      </div>
+      <div class="notification-div">
+        <a href="notification.html"><button class="notif-btn"><img src="../assets/images/icons/notification.png" alt="" class="not-img"><span class="notif-text">  Notifications</span> <span class="not-num"><b><strong>10</strong></b></span></button></a>
+      </div>
+    </div>
+    <!-- Navigation part End  -->
+    <div class="all-body-content">
+    <!-- Home part start  -->
+
+    <div class="right-dir "> 
+
+      <!-- Heme header start   -->
+   
+      <div class="head">
+        <div class="logo-name-div">
+          <div class="menu-icon in-top">
+            <img class="icon-menu menu-btn" onclick="OpenNav()" src="../assets/images/icons/icon_menu.png"/>
+          </div>
+          <div class="menu-icon2 in-top">
+            <a href="home.html"><img class="icon-menu1 menu-btn" onclick="OpenNav()" src="../assets/images/icons/home3.png"/></a>
+          </div>
+          <div class="icon-div">
+            <!-- <img class="icon-logo" src="../assets/images/logostu.png"/> -->
+            <a href="../index.html"><img class="icon-logo" src="../assets/images/logostu.png"/></a>
+          </div>
+          <div class="name-div">
+            <span class="home-web-name"><b><strong>MyDiary</strong></b></span>
+          </div>
+          <div class="help-icon-div">
+            <div style="width: 90px; display: flex;"><a href="service.html"><img src="../assets/images/icons/servicec.png" alt="" class="service-icon" title="service"></a><span class="sev">Service</span></div>
+            <div style="width: 90px; display: flex;"><a href="help.html"><img src="../assets/images/icons/help.png" alt="" class="help-icon" title="help"/></a><span class="sev">Support</span></div> 
+          </div> 
+        </div> 
+      </div>
+
+      <!-- home header end -->
+
+      <!-- home body start -->
+      
+      
+      <!-- Home content start -->
+
+    <div class="content-body-b">
+      <div class="container">
+        <div class="title">
+           <strong><span>MyDiary Reminder Settings</span></strong>
+        </div> 
+        <center>
+          <div class="body">
+           <div>
+            <div class="message">
+                <span class="mess">message:</span>
+                <textarea name="" id="" cols="38" rows="3" style="margin-left: 60px;margin-top:10px; border-radius: 5px;" placeholder="Message to be displayed"></textarea>
+            </div>
+            <div class="message1">
+               <span class="mess">Date:</span>
+               <input  class="input-field confirm" id="confirm" type="date" name="password" placeholder="DD/MM/YY" style="margin-left: 89px; margin-top:10px;"><br>
+            </div>
+            <div class="message1"">
+                <span class="mess">Time:</span>
+                <input  class="input-field confirm" id="confirm" type="time" name="password" placeholder="DD/MM/YY" style="margin-left: 84px; margin-top:10px;">
+            </div>
+            <div class="message1"">
+                <span class="mess">Period:</span>
+                <select name="" id="" style="margin-left:73px ; margin-top:10px;border-radius: 5px; width: 297px;height: 30px;" >
+                        <option value="">Monthly</option>
+                    <option value="">weekely</option>
+                    <option value="">Daily</option>
+                </select>
+            </div>
+           </div>
+          </div>
+      </center> 
+      <div class="buttons-div" style="display: flex; margin-top: 0px;">
+            <div class="button next">
+                <a href="home.html"><a href="home.html"><button  class="btn-next">Save</button></a>
+                </div>
+            <div class="button login">
+                <a href="home.html"><button type="button" class="btn-login">Cancel</button></a>
+            </div>
+            
+        </div>
+     </div>
+     
+    </div>
+    </div>
+
+
+   <!-- home body end -->
+   
+  </div> 
+  </div>
+  <script type="text/javascript" src="../js/control.js"></script>
+  <script type="text/javascript" src="../js/preloader.js"></script>
+  <footer class="footer-sesion">
+    <div class="logo-app-name-div-footer-region">
+      <div class="footer-icon-div">
+        <img class="icon-logo" src="../assets/images/logostu.png"/>
+      </div>
+      <div class="footer-tex">
+         <center style="color: white; font-size: 15px;">this app can can be used as Daily book, Event schedules and thoughts store</center>
+         <center style="color: white; font-size: 15px;">We prefer message,but feel free to give us feedback or</center>
+         <center style="color: white; font-size: 20px;"><b><strong>Contact Us</strong></b></center>
+      </div>
+      <center>
+      <div class="footer-img-div">
+        <img src="../assets/images/icons/facebook4.png" alt="" class="footer-facebook-icon">    
+        <img src="../assets/images/icons/twitter.png" alt="" class="footer-twitter-icon">
+        <img src="../assets/images/icons/instagram.jpg" alt="" class="footer-intagram-icon">
+        <img src="../assets/images/icons/google.png" alt="" class="footer-google-icon">
+        <img src="../assets/images/icons/what4.png" alt="" class="footer-whatsapp-icon">
+        <img src="" alt="">
+        <img src="" alt="">
+        <img src="" alt="">
+      </div>
+      <center>
+      <div class="copyright">
+        copyright &copy;2019 All rights reserved | MyDiary
+      </div> 
+    </div> 
+    </footer>
+  
+</body>
+
+</html>

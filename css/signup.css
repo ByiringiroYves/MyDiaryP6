@@ -7,7 +7,7 @@
 body{
   margin: 0;
   height: 97.7vh;
-  background:url("../assets/images/back4.jpg")no-repeat center center fixed;
+  background:url("../assets/images/back5.jpg")no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -78,6 +78,17 @@ body{
   margin-top: 40px;
   min-height: 20px;
   padding: 30px;
+  background-color: white;
+  border: 0px solid #e3e3e3;
+   border-radius: var(--border-radius);
+   -webkit-box-shadow:0px 0px 6px var(--rayal-white-borders);
+  -moz-box-shadow:0px 0px 6px var(--rayal-white-borders);
+}
+.task-content2 {
+  display: none;
+  margin-top: 40px;
+  min-height: 20px;
+  padding: 20px;
   background-color: white;
   border: 0px solid #e3e3e3;
    border-radius: var(--border-radius);
